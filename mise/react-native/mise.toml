@@ -1,0 +1,19 @@
+min_version = { soft = "2024.11.1" }
+
+[settings]
+env_file = "mise.env"
+
+[tools]
+node = "lts"
+bun = "1.3.8"
+python = "3.12"
+java = "17"
+
+[env]
+EXPO_PACKAGE_MANAGER = "bun"
+EDITOR = "code"
+_.path = [
+  "/opt/homebrew/opt/ruby@3.4/bin",
+  "./bin",
+  "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+]

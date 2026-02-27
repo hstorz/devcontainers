@@ -1,0 +1,18 @@
+[tools]
+python = "3.12"
+
+[env]
+VIRTUAL_ENV = "{{config_root}}/.venv"
+
+[tasks.setup]
+description = "Create virtual environment and install dependencies"
+run = """
+python -m venv .venv && \
+source .venv/bin/activate && \
+pip install -U pip && \
+pip install -r requirements.txt
+"""
+
+[tasks.activate]
+description = "Activate virtual environment"
+run = "source .venv/bin/activate"

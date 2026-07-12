@@ -1,6 +1,7 @@
 brew "biome"
 brew "chezmoi"
-brew "delta"
+brew "herdr"
+brew "hunk"
 brew "fresh-editor"
 brew "fzf"
 brew "intelli-shell"

@@ -12,4 +12,11 @@ chezmoi init "${DOTFILES_REPO}" --no-tty
 git -C "$(chezmoi source-path)" -c advice.detachedHead=false checkout "${DOTFILES_COMMIT}"
 chezmoi apply --destination="${HOME}" --no-tty
 
+echo "==> Configuring git to use hunk as the default diff viewer..."
+
+git config --global core.pager "hunk pager"
+git config --global diff.tool hunk
+git config --global difftool.hunk.cmd 'hunk diff "$LOCAL" "$REMOTE"'
+git config --global difftool.prompt false
+
 echo "==> Dev container ready."

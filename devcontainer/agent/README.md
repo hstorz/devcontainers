@@ -61,8 +61,11 @@ provisioned by chezmoi and not mounted, so API keys come only from `remoteEnv`
 
 - **No passwordless sudo** — the base image's NOPASSWD `vscode` sudoers entry is
   removed; agents cannot trivially escalate to root.
-- **Dropped Linux capabilities** — `NET_ADMIN`, `SYS_ADMIN`, `SYS_PTRACE`,
-  `SYS_MODULE`, `DAC_READ_SEARCH`, `AUDIT_WRITE` are dropped.
+- **Dropped Linux capabilities** — `NET_ADMIN`, `SYS_ADMIN`, `SYS_MODULE`,
+  `DAC_READ_SEARCH`, `AUDIT_WRITE` are dropped. `SYS_PTRACE` is intentionally
+  **retained** so agents can run native debuggers (gdb, lldb, strace) when
+  needed for general coding tasks. `no-new-privileges` still blocks any
+  privilege escalation to root.
 - **`no-new-privileges`** is set via `runArgs` (also blocks `sudo` from
   escalating to root).
 - **`--userns=keep-id:uid=1000,gid=1000`** (Podman only) explicitly maps the
@@ -80,6 +83,9 @@ provisioned by chezmoi and not mounted, so API keys come only from `remoteEnv`
 - **`tmpfs` on `/tmp`** with `nosuid,nodev`.
 - **Pinned inputs** — base image tag, Brewfile contents, and dotfiles revision
   are all pinned (no floating `main` fetches at build/start time).
+- **`~/.local/bin` on `PATH`** — prepended in the image `ENV` so tools installed
+  by `uv tool install` (e.g. LLM benchmark CLIs) are reachable by agents and
+  their subprocesses, not just interactive login shells.
 - **Tap trust preserved** — `HOMEBREW_NO_REQUIRE_TAP_TRUST` is NOT set; taps
   must be trusted explicitly.
 

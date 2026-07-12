@@ -9,7 +9,7 @@ ENV HOMEBREW_NO_ENV_HINTS=1
 ENV HOMEBREW_NO_ANALYTICS=1
 USER vscode
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
+ENV PATH="/home/vscode/.local/bin:/home/linuxbrew/.linuxbrew/bin:${PATH}"
 
 # Copy linux-only Brewfile into the image and install tools. 
 # Use a cache mount for Homebrew's download and build cache to speed up subsequent builds.

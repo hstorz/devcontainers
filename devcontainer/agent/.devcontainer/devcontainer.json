@@ -21,7 +21,6 @@
     "--security-opt=no-new-privileges:true",
     "--cap-drop=NET_ADMIN",
     "--cap-drop=SYS_ADMIN",
-    "--cap-drop=SYS_PTRACE",
     "--cap-drop=SYS_MODULE",
     "--cap-drop=DAC_READ_SEARCH",
     "--cap-drop=AUDIT_WRITE",

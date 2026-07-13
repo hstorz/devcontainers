@@ -5,7 +5,7 @@ set -euo pipefail
 # Bump DOTFILES_COMMIT to update to the latest dotfiles.
 
 DOTFILES_REPO="https://github.com/h1st0ry3D/dotfiles.git"
-DOTFILES_COMMIT="10524ba"
+DOTFILES_COMMIT="a15e146"
 
 echo "==> Applying dotfiles from chezmoi @ ${DOTFILES_COMMIT}..."
 chezmoi init "${DOTFILES_REPO}" --no-tty
